@@ -3,7 +3,8 @@ using TMPro;
 using System.Globalization;
 using ArbolGenealogico.Domain;
 using System;
-using System.ComponentModel;
+using System.Collections.Generic;
+using Unity.VisualScripting;
 
 public class FormularioPersona : MonoBehaviour
 {
@@ -14,11 +15,12 @@ public class FormularioPersona : MonoBehaviour
     public TMP_InputField inputCumple;
     public TMP_InputField inputPais;
     public TMP_InputField inputCoords;
-    public TextMeshProUGUI textoResultado;   // opcional
 
     private Persona personaActual;
 
-    // Este método lo vas a llamar desde el botón
+    public static List<Persona> personas = new List<Persona>(); 
+
+    // Este método lo llamas con el boton 
     public void CrearPersonaDesdeUI()
     {
         string nombre = inputNombre.text;
@@ -30,12 +32,9 @@ public class FormularioPersona : MonoBehaviour
         string paisResidencia = inputPais.text;
 
         // Leer entero
-        if (!int.TryParse(inputEdad.text, out int edad))
+        if (!int.TryParse(inputEdad.text, out int edad) || edad < 0)
         {
             Debug.LogWarning("Edad inválida");
-            if (textoResultado != null)
-                textoResultado.text = "Edad inválida";
-            return;
         }
 
         // Leer lista de coordenadas (ejemplo: "12.34,56.78")
@@ -45,9 +44,6 @@ public class FormularioPersona : MonoBehaviour
         if (string.IsNullOrWhiteSpace(coordsInput))
         {
             Debug.LogWarning("Coords inválidos (vacío)");
-            if (textoResultado != null)
-                textoResultado.text = "Coords inválidos";
-            return;
         }
 
         
@@ -57,9 +53,6 @@ public class FormularioPersona : MonoBehaviour
             if (!double.TryParse(part.Trim(), NumberStyles.Any, CultureInfo.InvariantCulture, out double value))
             {
                 Debug.LogWarning($"Coord inválida: '{part}'");
-                if (textoResultado != null)
-                    textoResultado.text = "Coords inválidos";
-                return;
             }
             coordenadas.Add(value);
         }
@@ -67,30 +60,50 @@ public class FormularioPersona : MonoBehaviour
         if (coordenadas.Count == 0)
         {
             Debug.LogWarning("No se encontraron coordenadas válidas");
-            if (textoResultado != null)
-                textoResultado.text = "Coords inválidos";
-            return;
-        }       
+        }
 
+        string[] formatos = { "dd/MM/yyyy", "dd-MM-yyyy","yyyy/MM/dd", "yyyy-MM-dd" };
+   
         // Leer DateTime (fecha)
-        if (!DateTime.TryParse(
+        if (!DateTime.TryParseExact(
                 inputCumple.text,
-                CultureInfo.InvariantCulture,   // IFormatProvider primero
-                DateTimeStyles.None,            // luego DateTimeStyles
+                formatos,
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
                 out DateTime fechaNacimiento))
         {
             Debug.LogWarning("Fecha inválida");
-            if (textoResultado != null)
-                textoResultado.text = "Fecha inválida";
-            return;
         }
 
         // Crear instancia de la clase
         personaActual = new Persona(nombre, edad, cedula, fechaNacimiento, coordenadas, rutaImagen, paisResidencia);
 
+        personas.Add(personaActual);
+
+        Debug.Log("Total personas: " + personas.Count);
+       
         Debug.Log("Persona creada: " + personaActual);
 
-        if (textoResultado != null)
-            textoResultado.text = "Creado: " + personaActual.ToString();
+    }
+    public static List<(string name1, string name2, double dis)> TodasDistancias()
+    {
+        if(personas.Count < 2)
+        {
+            Debug.LogWarning("No hay suficientes personas para calcular distancias.");
+            return new List<(string name1, string name2, double dis)> {("null", "null", 0)};
+        }
+        List<(string name1, string name2, double dis)> resultado = 
+        new List<(string name1, string name2, double dis)>();
+        for (int i = 0; i < personas.Count; i++)
+        {
+            for (int j = i + 1; j < personas.Count; j++)
+            {
+                double distancia = GeoUtils.CalcularDistancia(
+                    personas[i].Coordenadas,
+                    personas[j].Coordenadas);
+                resultado.Add((personas[i].Nombre, personas[j].Nombre, distancia));
+            }
+        }
+        return resultado;
     }
 }

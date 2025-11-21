@@ -18,14 +18,14 @@ namespace ArbolGenealogico.Domain
     public static class GeoUtils  
     {
         // Fórmula de Haversine para calcular distancia en kilómetros
-        public static double CalcularDistancia((double Lat, double Lon) coord1, (double Lat, double Lon) coord2)
+        public static double CalcularDistancia(List<double> coord1, List<double> coord2)
         {
             const double RadioTierra = 6371; // km
 
-            double lat1Rad = coord1.Lat * Math.PI / 180.0;
-            double lon1Rad = coord1.Lon * Math.PI / 180.0;
-            double lat2Rad = coord2.Lat * Math.PI / 180.0;
-            double lon2Rad = coord2.Lon * Math.PI / 180.0;
+            double lat1Rad = coord1[0] * Math.PI / 180.0;
+            double lon1Rad = coord1[1] * Math.PI / 180.0;
+            double lat2Rad = coord2[0] * Math.PI / 180.0;
+            double lon2Rad = coord2[1] * Math.PI / 180.0;
 
             double dLat = lat2Rad - lat1Rad;
             double dLon = lon2Rad - lon1Rad;
