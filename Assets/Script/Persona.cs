@@ -39,6 +39,15 @@ namespace ArbolGenealogico.Domain
 
         public Persona(){} // Constructor vacío para tests
 
+        public override string ToString()
+        {
+            string coords = (Coordenadas != null && Coordenadas.Count >= 2)
+                ? $"{Coordenadas[0]}, {Coordenadas[1]}"
+                : "Sin coordenadas";
+
+            return $"Nombre: {Nombre}, Cédula: {Cedula}, Edad: {Edad}, Coordenadas: {coords}";
+        }
+
     }
 
 }
