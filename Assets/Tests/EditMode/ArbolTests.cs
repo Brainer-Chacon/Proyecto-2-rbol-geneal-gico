@@ -45,7 +45,7 @@ public class ArbolTests
             cedula: "987654321",
             fechaNacimiento: new DateTime(1994, 1, 1),
             coordenadas: coords,
-            rutaImagen: "luis.png",
+            rutaImagen: "luis",
             parentesco: "Padre"
         );
 
@@ -53,8 +53,8 @@ public class ArbolTests
         Assert.AreEqual(30, persona.Edad);
         Assert.AreEqual("987654321", persona.Cedula);
         Assert.AreEqual(new DateTime(1994, 1, 1), persona.FechaNacimiento);
-        Assert.AreSame(coords, persona.Coordenadas);
-        Assert.AreEqual("luis.png", persona.RutaImagen);
+        CollectionAssert.AreEqual(coords, persona.Coordenadas);
+        Assert.AreEqual("luis", persona.RutaImagen);
         Assert.AreEqual("Padre", persona.Parentesco);
     }
 
@@ -80,22 +80,23 @@ public class ArbolTests
     }
 
     // ------------------------------------------------------------------
-    // 4. Persona: Se guardan correctamente las coordenadas
+    // 4. Persona: Se respetan límites negativos y positivos en coordenadas
     // ------------------------------------------------------------------
     [Test]
-    public void Persona_Coordenadas_SeGuardanCorrectamente()
+    public void Persona_Coordenadas_RespetanLimitesNegativosYPositivos()
     {
         var persona = new Persona
         {
-            Nombre = "Carlos",
-            Cedula = "555666777",
-            Edad = 40,
-            Coordenadas = new List<double> { 9.5, -83.75 }
+            Coordenadas = new List<double> { 600, 999 }
         };
 
-        Assert.AreEqual(2, persona.Coordenadas.Count);
-        Assert.AreEqual(9.5, persona.Coordenadas[0]);
-        Assert.AreEqual(-83.75, persona.Coordenadas[1]);
+        Assert.AreEqual(400, persona.Coordenadas[0]);   // max X
+        Assert.AreEqual(210, persona.Coordenadas[1]);   // max Y
+
+        persona.Coordenadas = new List<double> { -800, -500 };
+
+        Assert.AreEqual(-400, persona.Coordenadas[0]);  // min X
+        Assert.AreEqual(-210, persona.Coordenadas[1]);  // min Y
     }
 
     // ------------------------------------------------------------------

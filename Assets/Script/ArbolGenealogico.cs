@@ -14,7 +14,7 @@ namespace ArbolGenealogico.Domain
 {
     public static class GeoUtils  
     {
-        // Fórmula de Haversine para calcular distancia en kilómetros
+        /// Calcula la distancia entre dos coordenadas (x, y) usando la fórmula de distancia euclidiana.
         public static double CalcularDistancia(List<double> coord1, List<double> coord2)
         {
             double x1 = coord1[0];
@@ -27,7 +27,7 @@ namespace ArbolGenealogico.Domain
 
             double result = (float)Math.Sqrt(dx * dx + dy * dy);
 
-            return result*0.04f*1000; // Aproximación a escala en km
+            return result*0.04f*1000; // Aproximación a escala en km, 0,04 viene del tamaño de los pixeles maximos en x 
         }
     }
 

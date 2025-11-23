@@ -18,7 +18,27 @@ namespace ArbolGenealogico.Domain
         public string Parentesco { get; set; }  // Parentesco con otra persona.
         public DateTime FechaNacimiento { get; set; } // Fecha de nacimiento.
         public int Edad { get; set; } // Edad calculada automáticamente.
-        public List<double> Coordenadas { get; set; } // Latitud y longitud de la residencia.
+        private List<double> coordenadas; // Coordenadas (X, Y) en el espacio del árbol.
+        public List<double> Coordenadas
+{
+        get => coordenadas;
+        set
+        {
+            if (value == null || value.Count < 2)
+                throw new ArgumentException("Las coordenadas deben tener al menos X y Y.");
+
+            double x = value[0];
+            double y = value[1];
+
+            // Limitar X entre -400 y 400
+            x = Math.Max(-400, Math.Min(x, 400));
+
+            // Limitar Y entre -210 y 210
+            y = Math.Max(-210, Math.Min(y, 210));
+
+            coordenadas = new List<double> { x, y };
+        }
+    }
         public string RutaImagen { get; set; } // Ruta de la imagen asociada a la persona.
     
         
