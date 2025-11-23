@@ -31,9 +31,5 @@ namespace ArbolGenealogico.Services
         }
 
         /// Calcula la distancia entre dos personas usando sus cédulas.
-        public double ObtenerDistancia(string cedula1, string cedula2)
-        {
-            return grafo.CalcularDistancia(cedula1, cedula2); // Retorna la distancia en kilómetros.
-        }
     }
 }

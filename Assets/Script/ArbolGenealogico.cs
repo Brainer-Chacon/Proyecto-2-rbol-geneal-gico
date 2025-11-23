@@ -7,11 +7,8 @@
     Incluye métodos para buscar personas por cédula y
         mostrar el árbol completo en consola.
 */
-
-
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace ArbolGenealogico.Domain 
 {
@@ -120,7 +117,7 @@ namespace ArbolGenealogico.Domain
             if (nodo == null) return;
 
             var p = nodo.Persona;
-            string info = $"{p.Nombre} - {p.PaisResidencia}";
+            string info = $"{p.Nombre} - {p.Parentesco}";
             lista.Add(info);
 
             foreach (var hijo in nodo.Hijos)
@@ -142,7 +139,7 @@ namespace ArbolGenealogico.Domain
             var p = nodo.Persona;
             string indentacion = new string(' ', nivel * 4); // 4 espacios por nivel
             string linea = $"{indentacion}- {p.Nombre}, Edad: {p.Edad})";
-            linea += $" - {p.PaisResidencia}";
+            linea += $" - {p.Parentesco}";
             Console.WriteLine(linea);
 
             foreach (var hijo in nodo.Hijos)

@@ -601,7 +601,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "Pa\xEDs:"
+  m_text: 'Hijo de:'
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -4023,9 +4023,8 @@ MonoBehaviour:
   inputCedula: {fileID: 264695682}
   inputEdad: {fileID: 1057221985}
   inputCumple: {fileID: 905124884}
-  inputPais: {fileID: 2105482943}
+  inputParentesco: {fileID: 0}
   inputCoords: {fileID: 863870653}
-  textoResultado: {fileID: 0}
 --- !u!4 &1402362940
 Transform:
   m_ObjectHideFlags: 0

@@ -13,7 +13,7 @@ public class FormularioPersona : MonoBehaviour
     public TMP_InputField inputCedula;
     public TMP_InputField inputEdad;
     public TMP_InputField inputCumple;
-    public TMP_InputField inputPais;
+    public TMP_InputField inputParentesco;
     public TMP_InputField inputCoords;
 
     private Persona personaActual;
@@ -29,12 +29,17 @@ public class FormularioPersona : MonoBehaviour
 
         string rutaImagen = inputImagen.text;
 
-        string paisResidencia = inputPais.text;
+        string paisResidencia = inputParentesco.text;
 
         // Leer entero
-        if (!int.TryParse(inputEdad.text, out int edad) || edad < 0)
+        if (!int.TryParse(inputEdad.text, out int edad))
         {
             Debug.LogWarning("Edad inválida");
+        }
+
+        if(edad < 0)
+        {
+            Debug.LogWarning("Edad no puede ser negativa");
         }
 
         // Leer lista de coordenadas (ejemplo: "12.34,56.78")

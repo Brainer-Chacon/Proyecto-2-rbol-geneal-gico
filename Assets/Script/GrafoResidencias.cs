@@ -30,18 +30,6 @@ namespace ArbolGenealogico.Services
             nodos[cedula] = (latitud, longitud); // Inserta o actualiza las coordenadas de la persona.
         }
 
-        /// Calcula la distancia entre dos personas usando sus cédulas.
-        public double CalcularDistancia(string cedula1, string cedula2)
-        {
-            if (!nodos.ContainsKey(cedula1) || !nodos.ContainsKey(cedula2)) // Verifica que ambas personas existan.
-                throw new ArgumentException("Una o ambas cédulas no existen en el grafo.");
-
-            var coord1 = nodos[cedula1]; // Coordenadas de la primera persona.
-            var coord2 = nodos[cedula2]; // Coordenadas de la segunda persona.
-
-            return DistanciaGeografica(coord1.Latitud, coord1.Longitud, coord2.Latitud, coord2.Longitud); // Retorna la distancia calculada.
-        }
-
         /// Método auxiliar para calcular distancia geográfica usando fórmula de Haversine.
         private double DistanciaGeografica(double lat1, double lon1, double lat2, double lon2)
         {

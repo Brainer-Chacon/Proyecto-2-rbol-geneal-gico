@@ -15,7 +15,7 @@ namespace ArbolGenealogico.Domain
     {
         public string Nombre { get; set; }  // Nombre de la persona.
         public string Cedula { get; set; } // Cédula única de la persona.
-        public string PaisResidencia { get; set; }  // País de residencia.
+        public string Parentesco { get; set; }  // Parentesco con otra persona.
         public DateTime FechaNacimiento { get; set; } // Fecha de nacimiento.
         public int Edad { get; set; } // Edad calculada automáticamente.
         public List<double> Coordenadas { get; set; } // Latitud y longitud de la residencia.
@@ -26,7 +26,7 @@ namespace ArbolGenealogico.Domain
         /// Constructor para inicializar una nueva instancia de Persona.
         /// Recibe cédula, nombre, fecha de nacimiento, coordenadas, ruta de imagen y estado vital.
         public Persona(string nombre, int edad, string cedula, DateTime fechaNacimiento, 
-        List<double> coordenadas, string rutaImagen, string paisResidencia)
+        List<double> coordenadas, string rutaImagen, string parentesco)
         {
             Nombre = nombre;
             Edad = edad;
@@ -34,7 +34,7 @@ namespace ArbolGenealogico.Domain
             FechaNacimiento = fechaNacimiento;
             Coordenadas = coordenadas;
             RutaImagen = rutaImagen;
-            PaisResidencia = paisResidencia;
+            Parentesco = parentesco;
         }
 
 
