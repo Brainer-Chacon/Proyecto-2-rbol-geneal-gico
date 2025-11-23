@@ -81,7 +81,6 @@ public class GUIMAPA : MonoBehaviour
     {
         string nombre = persona.Nombre;
 
-        // If lines are already drawn → delete them and exit
         if (lineasPorNodo.ContainsKey(nombre))
         {
             foreach (var linea in lineasPorNodo[nombre])
@@ -90,10 +89,9 @@ public class GUIMAPA : MonoBehaviour
             lineasPorNodo.Remove(nombre);
 
             Debug.Log($"Lines for {nombre} removed.");
-            return; // 👈 prevents drawing again immediately
+            return; // Salir de la función si ya existían líneas
         }
 
-        // If lines are NOT drawn yet → draw them now
         List<(string name1, string name2, double distancia)> enlaces =
             BuscarNDistancias(persona.Nombre, FormularioPersona.TodasDistancias());
 

@@ -2,7 +2,7 @@ using UnityEngine;
 using TMPro;
 using System.Collections.Generic; // alias para desambiguar
 
-public class GUIStatsProm : MonoBehaviour
+public class GUIStatsProm : MonoBehaviour // Clase para mostrar el promedio de distancias en la UI.
 {
     public TextMeshProUGUI myText;  
 

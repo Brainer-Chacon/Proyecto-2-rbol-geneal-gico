@@ -37,7 +37,7 @@ namespace ArbolGenealogico.Domain
             Parentesco = parentesco;
         }
 
-
+        public Persona(){} // Constructor vacío para tests
 
         /// Devuelve una representación textual de la persona.
         /// Incluye nombre, cédula, edad, estado y ubicación.

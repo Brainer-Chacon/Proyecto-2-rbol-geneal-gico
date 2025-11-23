@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 
-public class GUIStatsLejos : MonoBehaviour
+public class GUIStatsLejos : MonoBehaviour // Clase para mostrar el par más lejano en la UI.
 {
     public TextMeshProUGUI myText;  
 

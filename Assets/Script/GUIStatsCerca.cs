@@ -3,7 +3,7 @@ using TMPro;
 using UnityEngine;
 using ArbolGenealogico.Domain;
 
-public class GUIStatsCerca : MonoBehaviour
+public class GUIStatsCerca : MonoBehaviour // Clase para mostrar el par más cercano en la UI.
 {
     public TextMeshProUGUI myText;  
 
