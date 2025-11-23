@@ -4023,7 +4023,7 @@ MonoBehaviour:
   inputCedula: {fileID: 264695682}
   inputEdad: {fileID: 1057221985}
   inputCumple: {fileID: 905124884}
-  inputParentesco: {fileID: 0}
+  inputParentesco: {fileID: 2105482943}
   inputCoords: {fileID: 863870653}
 --- !u!4 &1402362940
 Transform:
@@ -5942,7 +5942,7 @@ GameObject:
   - component: {fileID: 2105482944}
   - component: {fileID: 2105482943}
   m_Layer: 5
-  m_Name: InputPais
+  m_Name: InputParentesco
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -39,12 +39,6 @@ namespace ArbolGenealogico.Domain
 
         public Persona(){} // Constructor vacío para tests
 
-        /// Devuelve una representación textual de la persona.
-        /// Incluye nombre, cédula, edad, estado y ubicación.
-        public override string ToString()
-        {
-            return $"{Nombre} ({Cedula}) - Edad: {Edad} años - Ubicación: {Coordenadas[0]}, {Coordenadas[1]}";
-        }
     }
 
 }
