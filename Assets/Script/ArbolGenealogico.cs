@@ -17,23 +17,17 @@ namespace ArbolGenealogico.Domain
         // Fórmula de Haversine para calcular distancia en kilómetros
         public static double CalcularDistancia(List<double> coord1, List<double> coord2)
         {
-            const double RadioTierra = 6371; // km
+            double x1 = coord1[0];
+            double y1 = coord1[1];
+            double x2 = coord2[0];
+            double y2 = coord2[1];
+            
+            double dx = x2 - x1;
+            double dy = y2 - y1;
 
-            double lat1Rad = coord1[0] * Math.PI / 180.0;
-            double lon1Rad = coord1[1] * Math.PI / 180.0;
-            double lat2Rad = coord2[0] * Math.PI / 180.0;
-            double lon2Rad = coord2[1] * Math.PI / 180.0;
+            double result = (float)Math.Sqrt(dx * dx + dy * dy);
 
-            double dLat = lat2Rad - lat1Rad;
-            double dLon = lon2Rad - lon1Rad;
-
-            double a = Math.Pow(Math.Sin(dLat / 2), 2) +
-                    Math.Cos(lat1Rad) * Math.Cos(lat2Rad) *
-                    Math.Pow(Math.Sin(dLon / 2), 2);
-
-            double c = 2 * Math.Atan2(Math.Sqrt(a), Math.Sqrt(1 - a));
-
-            return RadioTierra * c;
+            return result*0.04f*1000; // Aproximación a escala en km
         }
     }
 

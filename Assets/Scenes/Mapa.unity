@@ -810,7 +810,7 @@ Transform:
   m_GameObject: {fileID: 1548978366}
   serializedVersion: 2
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -423.36, y: -235.01, z: 0}
+  m_LocalPosition: {x: -420.59, y: -230.02, z: 0}
   m_LocalScale: {x: 0.28, y: 0.28, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -900,7 +900,6 @@ MonoBehaviour:
   buttonPrefab: {fileID: 6905892972390995797, guid: 57c0efd7568545240a7fcc1f6cc2940c, type: 3}
   parentUI: {fileID: 593560679}
   linePrefab: {fileID: 6984994377443532302, guid: d45c43d96b9ac9341a5ffc1f3889ad41, type: 3}
-  cuadroPrefab: {fileID: 3520457069949169327, guid: e8558c511f5ce4e4ab046d094565dce7, type: 3}
 --- !u!224 &2119328346
 RectTransform:
   m_ObjectHideFlags: 0
