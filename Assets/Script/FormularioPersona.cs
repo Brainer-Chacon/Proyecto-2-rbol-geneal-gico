@@ -102,7 +102,7 @@ public class FormularioPersona : MonoBehaviour
         {
             for (int j = i + 1; j < personas.Count; j++)
             {
-                double distancia = GeoUtils.CalcularDistancia(
+                double distancia = Distancias.CalcularDistancia(
                     personas[i].Coordenadas,
                     personas[j].Coordenadas);
                 resultado.Add((personas[i].Nombre, personas[j].Nombre, distancia));
